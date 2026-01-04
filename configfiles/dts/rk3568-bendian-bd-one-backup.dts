@@ -3266,19 +3266,19 @@
 		fan {
 
 			fan_pins: fan-pins {
-				rockchip,pins = <&gpio4 0x07 0x00 0xbe>;
+				rockchip,pins = <0x04 0x07 0x00 0xbe>;
 			};
 		};
 
 		gpio-leds {
 
 			power_led_pin: power-led-pin {
-				rockchip,pins = <&gpio4 0x0b 0x00 0xbe>;
+				rockchip,pins = <0x04 0x0b 0x00 0xbe>;
 				phandle = <0x159>;
 			};
 
 			status_led_pin: status-led-pin {
-				rockchip,pins = <&gpio4 0x09 0x00 0xbe>;
+				rockchip,pins = <0x04 0x09 0x00 0xbe>;
 				phandle = <0x15f>;
 			};
 		};
