@@ -318,7 +318,7 @@
 		resets = <0x11 0x94>;
 		snps,dis_u2_susphy_quirk;
 		status = "okay";
-		phys = <0x15>;
+		phys = <0x15 0x16 0x04>;
 		phy-names = "usb2-phy", "usb3-phy";
 		extcon = <0x17>;
 	};
@@ -330,13 +330,13 @@
 		clocks = <0x11 0xa9 0x11 0xaa 0x11 0xa8>;
 		clock-names = "ref_clk", "suspend_clk", "bus_clk";
 		dr_mode = "host";
-		phys = <0x18>;
+		phys = <0x18 0x12 0x04>;
 		phy-names = "usb2-phy", "usb3-phy";
 		phy_type = "utmi_wide";
 		power-domains = <0x13 0x0f>;
 		resets = <0x11 0x95>;
 		snps,dis_u2_susphy_quirk;
-		status = "okay";
+		status = "disabled";
 	};
 
 	interrupt-controller@fd400000 {
