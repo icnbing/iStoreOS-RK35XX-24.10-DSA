@@ -759,7 +759,7 @@
 		power-domains = <0x17 0x0f>;
 		phys = <0x16 0x08>;
 
-		mdio {
+		mdio1 {
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <0x01>;
 			#size-cells = <0x00>;
@@ -3017,8 +3017,8 @@
 		reg = <0x00 0xfe2a0000 0x00 0x10000>;
 		interrupts = <0x00 0x1b 0x04 0x00 0x18 0x04>;
 		interrupt-names = "macirq", "eth_wake_irq";
-		clocks = <0x11 0x182 0x11 0x185 0x11 0x185 0x11 0xb8 0x11 0xb4 0x11 0xb5 0x11 0x185 0x11 0xb9 0x11 0xac>;
-		clock-names = "stmmaceth", "mac_clk_rx", "mac_clk_tx", "clk_mac_refout", "aclk_mac", "pclk_mac", "clk_mac_speed", "ptp_ref", "pclk_xpcs";
+		clocks = <0x11 0x182 0x11 0x185 0x11 0x185 0x11 0xb8 0x11 0xb4 0x11 0xb5 0x11 0x185 0x11 0xb9>;
+		clock-names = "stmmaceth", "mac_clk_rx", "mac_clk_tx", "clk_mac_refout", "aclk_mac", "pclk_mac", "clk_mac_speed", "ptp_ref";
 		resets = <0x11 0xd7>;
 		reset-names = "stmmaceth";
 		rockchip,grf = <0x1f>;
@@ -3028,6 +3028,9 @@
 		snps,mtl-tx-config = <0xc5>;
 		snps,tso;
 		status = "okay";
+		snps,reset-gpio = <0x4f 0x08 0x01>;
+		snps,reset-active-low;
+		snps,reset-delays-us = <0x00 0x4e20 0x186a0>;
 		assigned-clocks = <0x11 0x185 0x11 0x182>;
 		assigned-clock-parents = <0x11 0x183>;
 		assigned-clock-rates = <0x00 0x7735940>;
@@ -3039,11 +3042,10 @@
 		rx_delay = <0x0f>;
 		phandle = <0xcb>;
 
-		mdio {
+		mdio0: mdio0 {
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <0x01>;
 			#size-cells = <0x00>;
-			phandle = <0x158>;
 		};
 
 		stmmac-axi-config {
@@ -3313,8 +3315,8 @@
 
 	rtlgsw@0 {
 		compatible = "realtek,rtl8367b", "realtek,rtl8367s";
-		realtek,mdio = <0x158>;
-		mii-bus = <0x158>;
+		realtek,mdio = <&mdio0>;
+		mii-bus = <&mdio0>;
 		realtek,id = <0x1d>;
 		phy-id = <0x1d>;
 		cpu_port = <0x07>;
