@@ -354,13 +354,12 @@
 		dma-noncoherent;
 		phandle = <0x01>;
 
-		interrupt-controller@fd440000 {
+		msi-controller@fd440000 {
 			compatible = "arm,gic-v3-its";
 			dma-noncoherent;
 			msi-controller;
 			#msi-cells = <0x01>;
 			reg = <0x00 0xfd440000 0x00 0x20000>;
-			interrupt-parent = <0x01>;
 			phandle = <0x5c>;
 		};
 	};
