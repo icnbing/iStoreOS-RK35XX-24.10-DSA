@@ -1166,6 +1166,7 @@
 		pinctrl-0 = <0x5d>;
 		reset-gpios = <0x5e 0x11 0x00>;
 		vpcie3v3-supply = <0x21>;
+		rockchip,perst-inactive-ms = <0x1f4>
 
 		legacy-interrupt-controller {
 			#address-cells = <0x00>;
@@ -2999,6 +3000,7 @@
 		pinctrl-0 = <0xc0>;
 		reset-gpios = <0xc1 0x16 0x00>;
 		vpcie3v3-supply = <0xc2>;
+		rockchip,perst-inactive-ms = <0x258>;
 
 		legacy-interrupt-controller {
 			interrupt-controller;
