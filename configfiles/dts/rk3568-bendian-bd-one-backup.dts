@@ -2359,7 +2359,7 @@
 			phandle = <0x64>;
 		};
 
-		gpio@fe770000 {
+		gpio4: gpio@fe770000 {
 			compatible = "rockchip,gpio-bank";
 			reg = <0x00 0xfe770000 0x00 0x100>;
 			interrupts = <0x00 0x25 0x04>;
@@ -3266,19 +3266,19 @@
 		fan {
 
 			fan_pins: fan-pins {
-				rockchip,pins = <0x00 0x07 0x00 0xbe>;
+				rockchip,pins = <&gpio4 0x07 0x00 0xbe>;
 			};
 		};
 
 		gpio-leds {
 
 			power_led_pin: power-led-pin {
-				rockchip,pins = <0x00 0x0b 0x00 0xbe>;
+				rockchip,pins = <&gpio4 0x0b 0x00 0xbe>;
 				phandle = <0x159>;
 			};
 
 			status_led_pin: status-led-pin {
-				rockchip,pins = <0x00 0x09 0x00 0xbe>;
+				rockchip,pins = <&gpio4 0x09 0x00 0xbe>;
 				phandle = <0x15f>;
 			};
 		};
@@ -4290,7 +4290,7 @@
 
 	gpio_fan: gpio-fan {
 		compatible = "gpio-fan";
-		gpios = <0x25 0x07 0x00>;
+		gpios = <&gpio4 0x07 0x00>;
 		gpio-fan,speed-map = <0x00 0x00 0x1d4c 0x01>;
 		#cooling-cells = <0x02>;
 		pinctrl-0 = <&fan_pins>;
@@ -4304,12 +4304,12 @@
 
 		led-0 {
 			label = "red:power";
-			gpios = <0x25 0x0b 0x01>;
+			gpios = <&gpio4 0x0b 0x01>;
 		};
 
 		led-1 {
 			label = "green:status";
-			gpios = <0x25 0x09 0x01>;
+			gpios = <&gpio4 0x09 0x01>;
 			linux,default-trigger = "heartbeat";
 		};
 	};
