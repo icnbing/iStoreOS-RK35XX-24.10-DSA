@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-2.0-only
+menu "Distributed Switch Architecture drivers"
+	depends on NET_DSA
+
+	config NET_DSA_TAG_REALTEK
+		tristate "Realtek DSA tag protocol support"
+		help
+		  This enables support for the Realtek DSA tag protocol used by
+		  Realtek Ethernet switches.
+
+	source "drivers/net/dsa/realtek/Kconfig"
+
+endmenu

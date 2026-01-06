@@ -43,7 +43,7 @@ echo -e "\\ndefine Device/bendian_bd-one
   DEVICE_VENDOR := BENDIAN
   DEVICE_MODEL := BD ONE
   DEVICE_DTS := rk3568/rk3568-bendian-bd-one
-  DEVICE_PACKAGES += kmod-nvme kmod-ata-ahci-dwc kmod-hwmon-pwmfan kmod-thermal kmod-switch-rtl8306 kmod-switch-rtl8366-smi kmod-switch-rtl8366rb kmod-switch-rtl8366s kmod-switch-rtl8367b swconfig kmod-swconfig kmod-r8169 kmod-mt7916-firmware
+  DEVICE_PACKAGES += kmod-nvme kmod-ata-ahci-dwc kmod-hwmon-pwmfan kmod-thermal kmod-r8169
 endef
 TARGET_DEVICES += bendian_bd-one" >> target/linux/rockchip/image/legacy.mk
 
@@ -52,14 +52,16 @@ TARGET_DEVICES += bendian_bd-one" >> target/linux/rockchip/image/legacy.mk
 cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 
 
-# 加入初始化交换机脚本
-cp -f $GITHUB_WORKSPACE/configfiles/swconfig_install package/base-files/files/etc/init.d/swconfig_install
-chmod 755 package/base-files/files/etc/init.d/swconfig_install
+cat "${GITHUB_WORKSPACE}/configfiles/config-6.6.local" >> target/linux/rockchip/armv8/config-6.6
+cat target/linux/rockchip/armv8/config-6.6
 
 
-# 电工大佬的rtl8367b驱动资源包，暂时使用这样替换
-wget https://github.com/xiaomeng9597/files/releases/download/files/rtl8367b.tar.gz
-tar -xvf rtl8367b.tar.gz
+# target/linux/rockchip/files/drivers/net/
+mkdir -p target/linux/rockchip/files/drivers/net/dsa
+cp -a $GITHUB_WORKSPACE/configfiles/packages/dsa/* target/linux/rockchip/files/drivers/net/dsa/
+chmod -R 775 target/linux/rockchip/files/drivers/net/dsa/
+ls target/linux/rockchip/files/drivers/net/
+ls target/linux/rockchip/files/drivers/net/dsa/
 
 
 # 复制dts设备树文件到指定目录下
