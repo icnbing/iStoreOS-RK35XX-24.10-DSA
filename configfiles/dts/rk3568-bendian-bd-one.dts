@@ -3028,9 +3028,6 @@
 		snps,mtl-tx-config = <0xc5>;
 		snps,tso;
 		status = "okay";
-		snps,reset-gpio = <0x4f 0x08 0x01>;
-		snps,reset-active-low;
-		snps,reset-delays-us = <0x00 0x4e20 0x186a0>;
 		assigned-clocks = <0x11 0x185 0x11 0x182>;
 		assigned-clock-parents = <0x11 0x183>;
 		assigned-clock-rates = <0x00 0x7735940>;
