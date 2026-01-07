@@ -3029,7 +3029,7 @@
 		snps,tso;
 		status = "okay";
 		assigned-clocks = <0x11 0x185 0x11 0x182>;
-		assigned-clock-parents = <0x11 0x183 0x11 0xbd>;
+		assigned-clock-parents = <0x11 0x183 0x11 0xb6>;
 		assigned-clock-rates = <0x00 0x7735940>;
 		clock_in_out = "output";
 		phy-mode = "rgmii";
