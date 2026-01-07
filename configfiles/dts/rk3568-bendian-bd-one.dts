@@ -3048,6 +3048,9 @@
 				compatible = "realtek,rtl8365mb";
 				reg = <0x1d>;
 				reset-gpios = <0xc1 0x03 0x01>;
+				reset-assert-us = <20000>;
+				reset-deassert-us = <100000>;
+				depends-on = <0xcb &mdio0>;
 
 				interrupt-controller {
 					interrupt-parent = <0xc1>;
