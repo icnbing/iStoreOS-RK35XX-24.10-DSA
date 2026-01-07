@@ -411,7 +411,6 @@
 		#interrupt-cells = <0x03>;
 		mbi-alias = <0x00 0xfd410000>;
 		mbi-ranges = <0x128 0x18>;
-		msi-controller;
 		ranges;
 		#address-cells = <0x02>;
 		#size-cells = <0x02>;
