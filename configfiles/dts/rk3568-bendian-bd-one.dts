@@ -3253,11 +3253,11 @@
 
 		gmac-reset {
 
-			gmac0-reset {
+			gmac0_reset: gmac0-reset {
 				rockchip,pins = <0x01 0x08 0x00 0xbe>;
 			};
 
-			gmac1-reset {
+			gmac1_reset: gmac1-reset {
 				rockchip,pins = <0x01 0x09 0x00 0xbe>;
 			};
 		};
@@ -3448,13 +3448,14 @@
 		rx_delay = <0x2c>;
 		clock_in_out = "output";
 		pinctrl-names = "default";
+		pinctrl-0 = <0xd2 0xd3 0xd4 0xd5 0xd6>;
 
 		mdio0: mdio0 {
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <1>;
 			#size-cells = <0>;
 
-			rtl8367s: switch@29 {
+			switch@29 {
 				compatible = "realtek,rtl8365mb";
 				reg = <29>;
 
@@ -3462,7 +3463,7 @@
 				pinctrl-names = "default";
 				reset-assert-us = <20000>;
 				reset-deassert-us = <100000>;
-				pinctrl-0 = <0xd2 0xd3 0xd4 0xd5 0xd6>;
+				pinctrl-0 = <&gmac0_reset>;
 
 				ports {
 					#address-cells = <1>;
