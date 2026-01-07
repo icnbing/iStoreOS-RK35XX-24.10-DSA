@@ -3410,7 +3410,7 @@
 		reset-names = "pipe";
 		status = "okay";
 		vpcie3v3-supply = <0xca>;
-		rockchip,perst-inactive-ms = <0x258>;
+		rockchip,perst-inactive-ms = <0x1f4>;
 		reset-gpios = <0x25 0x16 0x00>;
 		pinctrl-0 = <0xcd>;
 
