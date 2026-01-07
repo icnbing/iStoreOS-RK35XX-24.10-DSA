@@ -351,7 +351,7 @@
 		interrupts = <0x01 0x09 0x04>;
 		phandle = <0x01>;
 
-		interrupt-controller@fd440000 {
+		msi-controller@fd440000 {
 			compatible = "arm,gic-v3-its";
 			dma-noncoherent;
 			msi-controller;
