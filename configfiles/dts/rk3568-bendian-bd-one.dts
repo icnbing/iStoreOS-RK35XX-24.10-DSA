@@ -4355,16 +4355,4 @@
 			linux,default-trigger = "heartbeat";
 		};
 	};
-
-	rtlgsw@0 {
-		compatible = "realtek,rtl8367b", "realtek,rtl8367s";
-		realtek,mdio = <&mdio0>;
-		mii-bus = <&mdio0>;
-		realtek,id = <0x1d>;
-		phy-id = <0x1d>;
-		cpu_port = <0x07>;
-		realtek,extif1 = <0x00 0x00 0x0b 0x01 0x01 0x01 0x01 0x01 0x02>;
-		realtek,extif2 = <0x00 0x00 0x01 0x01 0x01 0x01 0x01 0x01 0x02>;
-		status = "okay";
-	};
 };
