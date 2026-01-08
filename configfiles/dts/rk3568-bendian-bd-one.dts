@@ -872,7 +872,7 @@
 		pinctrl-0 = <0x30>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
-		status = "okay";
+		status = "disabled";
 	};
 
 	pwm@fdd70020 {
@@ -883,7 +883,7 @@
 		pinctrl-0 = <0x31>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
-		status = "disable";
+		status = "disabled";
 	};
 
 	pwm@fdd70030 {
@@ -894,7 +894,7 @@
 		pinctrl-0 = <0x32>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
-		status = "disable";
+		status = "disabled";
 	};
 
 	power-management@fdd90000 {
