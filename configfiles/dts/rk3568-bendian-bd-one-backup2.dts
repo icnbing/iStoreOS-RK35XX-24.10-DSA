@@ -2997,7 +2997,7 @@
 		pinctrl-0 = <0xc0>;
 		reset-gpios = <0xc1 0x16 0x00>;
 		vpcie3v3-supply = <0xc2>;
-		rockchip,perst-inactive-ms = <0x258>;
+		rockchip,perst-inactive-ms = <0x1f4>;
 
 		legacy-interrupt-controller {
 			interrupt-controller;

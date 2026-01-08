@@ -3210,11 +3210,6 @@
 				phandle = <0xef>;
 			};
 
-			camera-pwr {
-				rockchip,pins = <0x00 0x11 0x00 0xbe>;
-				phandle = <0xf2>;
-			};
-
 			vcc3v3-pcie-en {
 				rockchip,pins = <0x00 0x1c 0x00 0xbe>;
 				phandle = <0xf0>;
@@ -4264,17 +4259,6 @@
 		regulator-min-microvolt = <0x325aa0>;
 		regulator-max-microvolt = <0x325aa0>;
 		vin-supply = <0xf1>;
-	};
-
-	vcc-camera-regulator {
-		compatible = "regulator-fixed";
-		gpio = <0x25 0x11 0x00>;
-		pinctrl-names = "default";
-		pinctrl-0 = <0xf2>;
-		regulator-name = "vcc_camera";
-		enable-active-high;
-		regulator-always-on;
-		regulator-boot-on;
 	};
 
 	vdd-cpu {
