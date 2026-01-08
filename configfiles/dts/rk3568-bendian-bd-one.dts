@@ -869,7 +869,6 @@
 		reg = <0x00 0xfdd70010 0x00 0x10>;
 		clocks = <0x22 0x0d 0x22 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x30>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";
@@ -880,7 +879,6 @@
 		reg = <0x00 0xfdd70020 0x00 0x10>;
 		clocks = <0x22 0x0d 0x22 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x31>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";
@@ -3209,11 +3207,6 @@
 				rockchip,pins = <0x00 0x1d 0x00 0xbe>;
 				phandle = <0xef>;
 			};
-
-			vcc3v3-pcie-en {
-				rockchip,pins = <0x00 0x1c 0x00 0xbe>;
-				phandle = <0xf0>;
-			};
 		};
 
 		sdio-pwrseq {
@@ -4242,11 +4235,6 @@
 		regulator-boot-on;
 		regulator-min-microvolt = <0x325aa0>;
 		regulator-max-microvolt = <0x325aa0>;
-		enable-active-high;
-		gpio = <0x25 0x1c 0x00>;
-		pinctrl-0 = <0xf0>;
-		pinctrl-names = "default";
-		startup-delay-us = <0x1388>;
 		vin-supply = <&vcc3v3_pi6c_03>;
 		phandle = <0xca>;
 	};

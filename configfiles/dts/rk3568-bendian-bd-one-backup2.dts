@@ -547,7 +547,6 @@
 		reg = <0x00 0xfdd70010 0x00 0x10>;
 		clocks = <0x1e 0x0d 0x1e 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x25>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";
@@ -558,7 +557,6 @@
 		reg = <0x00 0xfdd70020 0x00 0x10>;
 		clocks = <0x1e 0x0d 0x1e 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x26>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";

@@ -884,7 +884,6 @@
 		reg = <0x00 0xfdd70010 0x00 0x10>;
 		clocks = <0x1c 0x0d 0x1c 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x2a>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";
@@ -895,7 +894,6 @@
 		reg = <0x00 0xfdd70020 0x00 0x10>;
 		clocks = <0x1c 0x0d 0x1c 0x30>;
 		clock-names = "pwm", "pclk";
-		pinctrl-0 = <0x2b>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
 		status = "disabled";
@@ -1482,7 +1480,6 @@
 		pinctrl-0 = <0x60>;
 		vpcie3v3-supply = <0x26>;
 		rockchip,perst-inactive-ms = <0x1f4>;
-		phandle = <0x11b>;
 
 		legacy-interrupt-controller {
 			#address-cells = <0x00>;
@@ -4769,11 +4766,6 @@
 				rockchip,pins = <0x00 0x1d 0x00 0xb8>;
 				phandle = <0xdf>;
 			};
-
-			vcc3v3-pcie-en {
-				rockchip,pins = <0x00 0x1c 0x00 0xb8>;
-				phandle = <0xe0>;
-			};
 		};
 
 		sdio-pwrseq {
@@ -4970,7 +4962,6 @@
 		rockchip,perst-inactive-ms = <0x1f4>;
 		reset-gpios = <0x1f 0x16 0x00>;
 		pinctrl-0 = <0xc7>;
-		phandle = <0x279>;
 
 		legacy-interrupt-controller {
 			interrupt-controller;
@@ -5366,11 +5357,6 @@
 		regulator-boot-on;
 		regulator-min-microvolt = <0x325aa0>;
 		regulator-max-microvolt = <0x325aa0>;
-		enable-active-high;
-		gpio = <0x1f 0x1c 0x00>;
-		pinctrl-0 = <0xe0>;
-		pinctrl-names = "default";
-		startup-delay-us = <0x1388>;
 		vin-supply = <&vcc3v3_pi6c_03>;
 		phandle = <0xc4>;
 	};
@@ -6057,7 +6043,6 @@
 		vcc3v3_lcd0_n_en = "/pinctrl/regulator-en/vcc3v3-lcd0-n-en";
 		vcc3v3_lcd1_n_en = "/pinctrl/regulator-en/vcc3v3-lcd1-n-en";
 		vcc3v3_vga_en = "/pinctrl/regulator-en/vcc3v3-vga-en";
-		vcc3v3_pcie_en = "/pinctrl/regulator-en/vcc3v3-pcie-en";
 		wifi_enable_h = "/pinctrl/sdio-pwrseq/wifi-enable-h";
 		pcie30x1_reset_h = "/pinctrl/pcie/pcie30x1-reset-h";
 		pcie30x2_reset_h = "/pinctrl/pcie/pcie30x2-reset-h";
