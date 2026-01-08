@@ -860,7 +860,7 @@
 		pinctrl-0 = <0x2f>;
 		pinctrl-names = "default";
 		#pwm-cells = <0x03>;
-		status = "okay";
+		status = "disabled";
 		phandle = <0xf3>;
 	};
 
