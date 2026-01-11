@@ -3445,11 +3445,19 @@
 				compatible = "realtek,rtl8365mb";
 				reg = <29>;
 
-				reset-gpios = <0xd1 0x08 0x01>;
+				reset-gpios = <0x25 0x03 0x01>;
 				pinctrl-names = "default";
 				reset-assert-us = <20000>;
 				reset-deassert-us = <100000>;
 				pinctrl-0 = <&gmac0_reset>;
+
+				interrupt_controller: interrupt-controller {
+					interrupt-parent = <0x25>;
+					interrupts = <0x04 0x08>;
+					interrupt-controller;
+					#address-cells = <0>;
+					#interrupt-cells = <1>;
+				};
 
 				ports {
 					#address-cells = <1>;
@@ -3458,32 +3466,68 @@
 					port@0 {
 						reg = <0>;
 						label = "lan4";
+						phy-handle = <&ethernet_phy0>;
 					};
 
 					port@1 {
 						reg = <1>;
 						label = "lan3";
+						phy-handle = <&ethernet_phy1>;
 					};
 
 					port@2 {
 						reg = <2>;
 						label = "lan2";
+						phy-handle = <&ethernet_phy2>;
 					};
 
 					port@3 {
 						reg = <3>;
 						label = "lan1";
+						phy-handle = <&ethernet_phy3>;
 					};
 
 					port@7 {
 						reg = <7>;
 						ethernet = <&gmac0>;
 						phy-mode = "rgmii";
+						tx-internal-delay-ps = <0x7d0>;
+						rx-internal-delay-ps = <0x7d0>;
 
 						fixed-link {
 							speed = <1000>;
 							full-duplex;
 						};
+					};
+				};
+
+				mdio0 {
+					compatible = "realtek,smi-mdio";
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					ethernet_phy0: ethernet-phy@0 {
+						reg = <0>;
+						interrupt-parent = <&interrupt_controller>;
+						interrupts = <0>;
+					};
+
+					ethernet_phy1: ethernet-phy@1 {
+						reg = <1>;
+						interrupt-parent = <&interrupt_controller>;
+						interrupts = <1>;
+					};
+
+					ethernet_phy2: ethernet-phy@2 {
+						reg = <2>;
+						interrupt-parent = <&interrupt_controller>;
+						interrupts = <2>;
+					};
+
+					ethernet_phy3: ethernet-phy@3 {
+						reg = <3>;
+						interrupt-parent = <&interrupt_controller>;
+						interrupts = <3>;
 					};
 				};
 			};
