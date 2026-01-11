@@ -3415,8 +3415,8 @@
 		reg = <0x00 0xfe2a0000 0x00 0x10000>;
 		interrupts = <0x00 0x1b 0x04 0x00 0x18 0x04>;
 		interrupt-names = "macirq", "eth_wake_irq";
-		clocks = <0x15 0x182 0x15 0x185 0x15 0x185 0x15 0xb8 0x15 0xb4 0x15 0xb5 0x15 0x185 0x15 0xb9>;
-		clock-names = "stmmaceth", "mac_clk_rx", "mac_clk_tx", "clk_mac_refout", "aclk_mac", "pclk_mac", "clk_mac_speed", "ptp_ref";
+		clocks = <0x15 0x182 0x15 0x185 0x15 0x185 0x15 0xb8 0x15 0xb4 0x15 0xb5 0x15 0x185 0x15 0xb9 0x15 0xac>;
+		clock-names = "stmmaceth", "mac_clk_rx", "mac_clk_tx", "clk_mac_refout", "aclk_mac", "pclk_mac", "clk_mac_speed", "ptp_ref", "pclk_xpcs";
 		resets = <0x15 0xd7>;
 		reset-names = "stmmaceth";
 		rockchip,grf = <0x23>;
@@ -3428,10 +3428,10 @@
 		status = "okay";
 		phy-mode = "rgmii";
 		assigned-clocks = <0x15 0x185 0x15 0x182>;
-		assigned-clock-parents = <0x15 0x183>;
+		assigned-clock-parents = <0x15 0x183 0x15 0xb6>;
 		assigned-clock-rates = <0x00 0x7735940>;
-		tx_delay = <0x3f>;
-		rx_delay = <0x2c>;
+		tx_delay = <0x3c>;
+		rx_delay = <0x2f>;
 		clock_in_out = "output";
 		pinctrl-names = "default";
 		pinctrl-0 = <0xd2 0xd3 0xd4 0xd5 0xd6>;
@@ -3479,8 +3479,6 @@
 						reg = <7>;
 						ethernet = <&gmac0>;
 						phy-mode = "rgmii";
-						tx-internal-delay-ps = <0>;
-						rx-internal-delay-ps = <0>;
 
 						fixed-link {
 							speed = <1000>;
@@ -3517,6 +3515,7 @@
 		fixed-link {
 			speed = <0x3e8>;
 			full-duplex;
+			pause;
 		};
 	};
 

@@ -112,6 +112,13 @@
 		};
 	};
 
+	rfkill-wlan {
+		compatible = "rfkill-gpio";
+		label = "rfkill-pcie-wlan";
+		radio-type = "wlan";
+		shutdown-gpios = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
+	};
+
 	sound {
 		compatible = "simple-audio-card";
 		pinctrl-names = "default";
@@ -328,7 +335,7 @@
     pinctrl-0 = <&i2c1m2_xfer>;
     status = "okay";
 
-    vdd_npu_s0: vdd_npu_mem_s0: rk8602@42 {
+    vdd_npu_s0: vdd_npu_mem_s0: regulator@42 {
         compatible = "rockchip,rk8602";
         reg = <0x42>;
         fcs,suspend-voltage-selector = <1>;
