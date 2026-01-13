@@ -3445,14 +3445,14 @@
 				compatible = "realtek,rtl8365mb";
 				reg = <29>;
 
-				reset-gpios = <0x25 0x03 0x01>;
+				reset-gpios = <0xd1 0x08 0x01>;
 				pinctrl-names = "default";
 				reset-assert-us = <20000>;
 				reset-deassert-us = <100000>;
-				pinctrl-0 = <&gmac0_reset>;
+				//pinctrl-0 = <&gmac0_reset>;
 
 				interrupt_controller: interrupt-controller {
-					interrupt-parent = <0x25>;
+					interrupt-parent = <0xd1>;
 					interrupts = <0x04 0x08>;
 					interrupt-controller;
 					#address-cells = <0>;
@@ -3491,8 +3491,8 @@
 						reg = <7>;
 						ethernet = <&gmac0>;
 						phy-mode = "rgmii";
-						tx-internal-delay-ps = <0x7d0>;
-						rx-internal-delay-ps = <0x7d0>;
+						tx-internal-delay-ps = <0>;
+						rx-internal-delay-ps = <0>;
 
 						fixed-link {
 							speed = <1000>;
