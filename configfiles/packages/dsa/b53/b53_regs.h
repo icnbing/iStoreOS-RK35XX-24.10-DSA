@@ -50,9 +50,6 @@
 /* Jumbo Frame Registers */
 #define B53_JUMBO_PAGE			0x40
 
-/* EAP Registers */
-#define B53_EAP_PAGE			0x42
-
 /* EEE Control Registers Page */
 #define B53_EEE_PAGE			0x92
 
@@ -102,11 +99,8 @@
 #define   PORT_OVERRIDE_SPEED_2000M	BIT(6) /* BCM5301X only, requires setting 1000M */
 #define   PORT_OVERRIDE_EN		BIT(7) /* Use the register contents */
 
-/* Power-down mode control (8 bit) */
+/* Power-down mode control */
 #define B53_PD_MODE_CTRL_25		0x0f
-#define  PD_MODE_PORT_MASK		0x1f
-/* Bit 0 also powers down the switch. */
-#define  PD_MODE_POWER_DOWN_PORT(i)	BIT(i)
 
 /* IP Multicast control (8 bit) */
 #define B53_IP_MULTICAST_CTRL		0x21
@@ -486,17 +480,6 @@
 #define B53_JUMBO_MAX_SIZE_63XX		0x08
 #define   JMS_MIN_SIZE			1518
 #define   JMS_MAX_SIZE			9724
-
-/*************************************************************************
- * EAP Page Registers
- *************************************************************************/
-#define B53_PORT_EAP_CONF(i)		(0x20 + 8 * (i))
-#define  EAP_MODE_SHIFT			51
-#define  EAP_MODE_SHIFT_63XX		50
-#define  EAP_MODE_MASK			(0x3ull << EAP_MODE_SHIFT)
-#define  EAP_MODE_MASK_63XX		(0x3ull << EAP_MODE_SHIFT_63XX)
-#define  EAP_MODE_BASIC			0
-#define  EAP_MODE_SIMPLIFIED		3
 
 /*************************************************************************
  * EEE Configuration Page Registers

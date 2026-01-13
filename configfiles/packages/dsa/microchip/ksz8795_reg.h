@@ -1,18 +1,13 @@
 /* SPDX-License-Identifier: GPL-2.0-or-later */
 /*
- * Microchip KSZ8XXX series register definitions
- *
- * The base for these definitions is KSZ8795 but unless indicated
- * differently by their prefix, they apply to all KSZ8 series
- * devices. Registers and masks that do change are defined in
- * dedicated structures in ksz_common.c.
+ * Microchip KSZ8795 register definitions
  *
  * Copyright (c) 2017 Microchip Technology Inc.
  *	Tristram Ha <Tristram.Ha@microchip.com>
  */
 
-#ifndef __KSZ8_REG_H
-#define __KSZ8_REG_H
+#ifndef __KSZ8795_REG_H
+#define __KSZ8795_REG_H
 
 #define KS_PORT_M			0x1F
 
@@ -26,9 +21,6 @@
 
 #define KSZ8863_GLOBAL_SOFTWARE_RESET	BIT(4)
 #define KSZ8863_PCS_RESET		BIT(0)
-
-#define KSZ88X3_REG_FVID_AND_HOST_MODE  0xC6
-#define KSZ88X3_PORT3_RMII_CLK_INTERNAL BIT(3)
 
 #define REG_SW_CTRL_0			0x02
 
@@ -129,8 +121,7 @@
 #define PORT_BASED_PRIO_3		3
 #define PORT_INSERT_TAG			BIT(2)
 #define PORT_REMOVE_TAG			BIT(1)
-#define KSZ8795_PORT_2QUEUE_SPLIT_EN	BIT(0)
-#define KSZ8873_PORT_4QUEUE_SPLIT_EN	BIT(0)
+#define PORT_QUEUE_SPLIT_L		BIT(0)
 
 #define REG_PORT_1_CTRL_1		0x11
 #define REG_PORT_2_CTRL_1		0x21
@@ -149,7 +140,6 @@
 #define REG_PORT_4_CTRL_2		0x42
 #define REG_PORT_5_CTRL_2		0x52
 
-#define KSZ8873_PORT_2QUEUE_SPLIT_EN	BIT(7)
 #define PORT_INGRESS_FILTER		BIT(6)
 #define PORT_DISCARD_NON_VID		BIT(5)
 #define PORT_FORCE_FLOW_CTRL		BIT(4)
@@ -272,7 +262,6 @@
 #define PORT_AUTO_MDIX_DISABLE		BIT(2)
 #define PORT_FORCE_MDIX			BIT(1)
 #define PORT_MAC_LOOPBACK		BIT(0)
-#define KSZ8873_PORT_PHY_LOOPBACK	BIT(0)
 
 #define REG_PORT_1_STATUS_2		0x1E
 #define REG_PORT_2_STATUS_2		0x2E
@@ -334,6 +323,13 @@
 	((addr) + REG_PORT_1_CTRL_0 + (port) *	\
 		(REG_PORT_2_CTRL_0 - REG_PORT_1_CTRL_0))
 
+#define REG_SW_MAC_ADDR_0		0x68
+#define REG_SW_MAC_ADDR_1		0x69
+#define REG_SW_MAC_ADDR_2		0x6A
+#define REG_SW_MAC_ADDR_3		0x6B
+#define REG_SW_MAC_ADDR_4		0x6C
+#define REG_SW_MAC_ADDR_5		0x6D
+
 #define TABLE_EXT_SELECT_S		5
 #define TABLE_EEE_V			1
 #define TABLE_ACL_V			2
@@ -363,6 +359,8 @@
 #define REG_IND_DATA_2			0x76
 #define REG_IND_DATA_1			0x77
 #define REG_IND_DATA_0			0x78
+
+#define REG_IND_DATA_PME_EEE_ACL	0xA0
 
 #define REG_INT_STATUS			0x7C
 #define REG_INT_ENABLE			0x7D
@@ -444,6 +442,20 @@
 #define TOS_PRIO_M			KS_PRIO_M
 #define TOS_PRIO_S			KS_PRIO_S
 
+#define REG_SW_CTRL_20			0xA3
+
+#define SW_GMII_DRIVE_STRENGTH_S	4
+#define SW_DRIVE_STRENGTH_M		0x7
+#define SW_DRIVE_STRENGTH_2MA		0
+#define SW_DRIVE_STRENGTH_4MA		1
+#define SW_DRIVE_STRENGTH_8MA		2
+#define SW_DRIVE_STRENGTH_12MA		3
+#define SW_DRIVE_STRENGTH_16MA		4
+#define SW_DRIVE_STRENGTH_20MA		5
+#define SW_DRIVE_STRENGTH_24MA		6
+#define SW_DRIVE_STRENGTH_28MA		7
+#define SW_MII_DRIVE_STRENGTH_S		0
+
 #define REG_SW_CTRL_21			0xA4
 
 #define SW_IPV6_MLD_OPTION		BIT(3)
@@ -468,7 +480,10 @@
 #define REG_PORT_4_CTRL_13		0xE1
 #define REG_PORT_5_CTRL_13		0xF1
 
-#define KSZ8795_PORT_4QUEUE_SPLIT_EN	BIT(1)
+#define PORT_QUEUE_SPLIT_H		BIT(1)
+#define PORT_QUEUE_SPLIT_1		0
+#define PORT_QUEUE_SPLIT_2		1
+#define PORT_QUEUE_SPLIT_4		2
 #define PORT_DROP_TAG			BIT(0)
 
 #define REG_PORT_1_CTRL_14		0xB2
@@ -707,6 +722,8 @@
 #define KSZ8795_ID_LO			0x1550
 #define KSZ8863_ID_LO			0x1430
 
+#define KSZ8795_SW_ID			0x8795
+
 #define PHY_REG_LINK_MD			0x1D
 
 #define PHY_START_CABLE_DIAG		BIT(15)
@@ -784,9 +801,7 @@
 #define KSZ8795_MIB_TOTAL_TX_1		0x105
 
 #define KSZ8863_MIB_PACKET_DROPPED_TX_0 0x100
-#define KSZ8863_MIB_PACKET_DROPPED_RX_0 0x103
-
-#define KSZ8895_MIB_PACKET_DROPPED_RX_0 0x105
+#define KSZ8863_MIB_PACKET_DROPPED_RX_0 0x105
 
 #define MIB_PACKET_DROPPED		0x0000FFFF
 
@@ -796,6 +811,5 @@
 #define TAIL_TAG_LOOKUP			BIT(7)
 
 #define FID_ENTRIES			128
-#define KSZ8_DYN_MAC_ENTRIES		1024
 
 #endif
