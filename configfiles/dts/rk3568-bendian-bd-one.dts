@@ -3449,7 +3449,7 @@
 				pinctrl-names = "default";
 				reset-assert-us = <20000>;
 				reset-deassert-us = <100000>;
-				//pinctrl-0 = <&gmac0_reset>;
+				pinctrl-0 = <&gmac0_reset>;
 
 				ports {
 					#address-cells = <1>;
