@@ -3424,19 +3424,16 @@
 		snps,mixed-burst;
 		snps,mtl-rx-config = <0xcf>;
 		snps,mtl-tx-config = <0xd0>;
-		snps,tso;
 		status = "okay";
-		phy-mode = "rgmii";
+		phy-mode = "rgmii-id";
 		assigned-clocks = <0x15 0x185 0x15 0x182>;
 		assigned-clock-parents = <0x15 0x183 0x15 0xb6>;
 		assigned-clock-rates = <0x00 0x7735940>;
-		tx_delay = <0x3c>;
-		rx_delay = <0x2f>;
 		clock_in_out = "output";
 		pinctrl-names = "default";
 		pinctrl-0 = <0xd2 0xd3 0xd4 0xd5 0xd6>;
 
-		mdio0: mdio {
+		mdio {
 			compatible = "snps,dwmac-mdio";
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -3451,6 +3448,27 @@
 				reset-deassert-us = <100000>;
 				pinctrl-0 = <&gmac0_reset>;
 
+				mdio {
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					phy0: ethernet-phy@0 {
+						reg = <0>;
+					};
+
+					phy1: ethernet-phy@1 {
+						reg = <1>;
+					};
+
+					phy2: ethernet-phy@2 {
+						reg = <2>;
+					};
+
+					phy3: ethernet-phy@3 {
+						reg = <3>;
+					};
+				};
+
 				ports {
 					#address-cells = <1>;
 					#size-cells = <0>;
@@ -3458,30 +3476,34 @@
 					port@0 {
 						reg = <0>;
 						label = "lan4";
+						phy-handle = <&phy0>;
 					};
 
 					port@1 {
 						reg = <1>;
 						label = "lan3";
+						phy-handle = <&phy1>;
 					};
 
 					port@2 {
 						reg = <2>;
 						label = "lan2";
+						phy-handle = <&phy2>;
 					};
 
 					port@3 {
 						reg = <3>;
 						label = "lan1";
+						phy-handle = <&phy3>;
 					};
 
 					port@7 {
 						reg = <7>;
 						label = "cpu";
 						ethernet = <&gmac0>;
-						phy-mode = "rgmii";
-						tx-internal-delay-ps = <0>;
-						rx-internal-delay-ps = <0>;
+						phy-mode = "rgmii-id";
+						rx-internal-delay-ps = <0x7d0>;
+						tx-internal-delay-ps = <0x7d0>;
 
 						fixed-link {
 							speed = <1000>;
