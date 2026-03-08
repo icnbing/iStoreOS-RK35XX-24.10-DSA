@@ -39,7 +39,8 @@ rockchip_setup_interfaces()
 	radxa,rock-3b)
 		ucidef_set_interfaces_lan_wan 'eth0' 'eth1'
 		;;
-	bendian,bd-one)
+	bendian,bd-one|\
+	nsy,g68-plus)
 		ucidef_set_interfaces_lan_wan 'lan1 lan2 lan3 lan4' 'eth0'
 		;;
 	hinlink,h88k-v3|\

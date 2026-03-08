@@ -3785,7 +3785,7 @@
 				phandle = <0x208>;
 			};
 
-			pmic-intl {
+			pmic-int {
 				rockchip,pins = <0x00 0x03 0x00 0xba>;
 				phandle = <0x20>;
 			};
@@ -4989,7 +4989,7 @@
 		snps,mtl-tx-config = <0xca>;
 		snps,tso;
 		status = "okay";
-		phy-mode = "rgmii";
+		phy-mode = "rgmii-id";
 		clock_in_out = "output";
 		assigned-clocks = <0x0f 0x185 0x0f 0x182>;
 		assigned-clock-parents = <0x0f 0x183 0x0f 0xb6>;
@@ -5043,7 +5043,7 @@
 					port@7 {
 						reg = <0x07>;
 						ethernet = <0xd2>;
-						phy-mode = "rgmii";
+						phy-mode = "rgmii-id";
 						tx-internal-delay-ps = <0x00>;
 						rx-internal-delay-ps = <0x00>;
 
