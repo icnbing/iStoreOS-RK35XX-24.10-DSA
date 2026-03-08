@@ -76,6 +76,5 @@ ls target/linux/rockchip/files/drivers/net/dsa/
 
 
 # 复制dts设备树文件到指定目录下
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3588-orangepi-5-plus.dts target/linux/rockchip/dts/rk3588/rk3588-orangepi-5-plus.dts
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568-bendian-bd-one.dts target/linux/rockchip/dts/rk3568/rk3568-bendian-bd-one.dts
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568-nsy-g68-plus.dts target/linux/rockchip/dts/rk3568/rk3568-nsy-g68-plus.dts
+cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3568/* target/linux/rockchip/dts/rk3568/
+cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
