@@ -71,7 +71,6 @@ cat target/linux/rockchip/armv8/config-6.6
 mkdir -p target/linux/rockchip/files/drivers/net/dsa
 cp -a $GITHUB_WORKSPACE/configfiles/userpatches/dsa/* target/linux/rockchip/files/drivers/net/dsa/
 chmod -R 775 target/linux/rockchip/files/drivers/net/dsa/
-ls target/linux/rockchip/files/drivers/net/
 ls target/linux/rockchip/files/drivers/net/dsa/
 
 
