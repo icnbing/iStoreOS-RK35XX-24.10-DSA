@@ -694,7 +694,6 @@
 	compatible = "snps,dwmac-mdio";
 	#address-cells = <1>;
     #size-cells = <0>;
-    status = "okay";
 
     rtl8367s: switch@29 {
         compatible = "realtek,rtl8365mb";
