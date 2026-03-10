@@ -75,6 +75,10 @@ ls target/linux/rockchip/files/drivers/net/
 ls target/linux/rockchip/files/drivers/net/dsa/
 
 
+cp -a $GITHUB_WORKSPACE/configfiles/userpatches/lede/* target/linux/rockchip/patches-6.6/
+ls target/linux/rockchip/patches-6.6/
+
+
 # 复制dts设备树文件到指定目录下
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3568/* target/linux/rockchip/dts/rk3568/
 cp -a $GITHUB_WORKSPACE/configfiles/dts/rk3588/* target/linux/rockchip/dts/rk3588/
