@@ -74,7 +74,7 @@ chmod -R 775 target/linux/rockchip/files/drivers/net/dsa/
 ls target/linux/rockchip/files/drivers/net/dsa/
 
 
-cp -a $GITHUB_WORKSPACE/configfiles/userpatches/patches-6.6/* target/linux/rockchip/patches-6.6/
+cp -a $GITHUB_WORKSPACE/configfiles/userpatches/patches-6.x/* target/linux/rockchip/patches-6.6/
 ls target/linux/rockchip/patches-6.6/
 
 
