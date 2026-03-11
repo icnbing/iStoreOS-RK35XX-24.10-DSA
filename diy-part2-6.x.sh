@@ -63,6 +63,9 @@ TARGET_DEVICES += nsy_g68-plus" >> target/linux/rockchip/image/legacy.mk
 cp -f $GITHUB_WORKSPACE/configfiles/02_network target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 
 
+cp -f $GITHUB_WORKSPACE/configfiles/init.sh target/linux/rockchip/armv8/base-files/lib/board/init.sh
+
+
 cat "${GITHUB_WORKSPACE}/configfiles/config-6.6.local" >> target/linux/rockchip/armv8/config-6.6
 cat target/linux/rockchip/armv8/config-6.6
 
