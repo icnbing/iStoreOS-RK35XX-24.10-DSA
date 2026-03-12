@@ -724,6 +724,10 @@
             phy3: ethernet-phy@3 {
                 reg = <3>;
             };
+
+            phy4: ethernet-phy@4 {
+                reg = <4>;
+            };
         };
 
         ports {
@@ -758,6 +762,13 @@
                 local-mac-address = [46 27 be 7a ca 00];
             };
 
+            port@4 {
+                reg = <4>;
+                label = "wan";
+                phy-handle = <&phy4>;
+                local-mac-address = [46 27 be 7a ca 01];
+            };
+
             port@7 {
                 reg = <7>;
                 label = "cpu";
@@ -765,7 +776,7 @@
                 phy-mode = "rgmii-id";
                 rx-internal-delay-ps = <2000>;
                 tx-internal-delay-ps = <2000>;
-                local-mac-address = [46 27 be 7a ca 01];
+                local-mac-address = [46 27 be 7a ca 02];
 
                 fixed-link {
                     speed = <1000>;
