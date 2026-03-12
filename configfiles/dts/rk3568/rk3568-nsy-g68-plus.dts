@@ -774,6 +774,7 @@
                 label = "cpu";
                 ethernet = <&gmac0>;
                 phy-mode = "rgmii-id";
+                managed = "in-band-status";
                 rx-internal-delay-ps = <2000>;
                 tx-internal-delay-ps = <2000>;
                 local-mac-address = [46 27 be 7a ca 02];
