@@ -221,9 +221,12 @@ board_set_iface_smp_affinity() {
 		set_iface_cpumask 2 eth0
 		set_iface_cpumask 4 eth1
 		;;
+	nsy,g68-plus)
+		set_iface_cpumask 3 eth0 "" c
+		set_iface_cpumask 4 eth1
+		;;
 	hinlink,opc-h69k|\
 	radxa,e25|\
-	nsy,g68-plus|\
 	sinovoip,rk3568-bpi-r2pro|\
 	friendlyarm,nanopi-r5s|friendlyelec,nanopi-r5s|\
 	friendlyelec,nanopi-r5s-c1)
