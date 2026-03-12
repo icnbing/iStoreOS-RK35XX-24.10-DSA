@@ -832,6 +832,8 @@
 	snps,reset-delays-us = <0 20000 100000>;
 	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>;
 	assigned-clock-parents = <&gmac1_xpcsclk>;
+	tx_delay = <0x30>;
+	rx_delay = <0x10>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&gmac1m1_miim>;
 	power-domains = <&power RK3568_PD_PIPE>;
