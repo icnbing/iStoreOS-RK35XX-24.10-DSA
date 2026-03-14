@@ -19,8 +19,8 @@
 	compatible = "nsy,g68-plus", "rockchip,rk3568";
 
 	aliases {
-		ethernet0 = &gmac0;
-		ethernet1 = &gmac1;
+		ethernet0 = &gmac1;
+		ethernet1 = &gmac0;
 		mmc0 = &sdhci;
 	};
 
