@@ -43,7 +43,7 @@ rockchip_setup_interfaces()
 		ucidef_set_interfaces_lan_wan 'lan1 lan2 lan3 lan4' 'eth0'
 		;;
 	nsy,g68-plus)
-		ucidef_set_interfaces_lan_wan 'lan1 lan2 lan3 lan4' 'wan'
+		ucidef_set_interfaces_lan_wan 'wan' 'lan1 lan2 lan3 lan4'
 		;;
 	hinlink,h88k-v3|\
 	hinlink,opc-h69k|\
