@@ -4,6 +4,7 @@
  * Device Tree Source for BenDian One (RK3568)
  *
  * Ported for iStoreOS by iStoreOS-Native project
+ * Updated for Linux 6.18 kernel compatibility
  */
 
 /dts-v1/;
@@ -13,7 +14,7 @@
 #include <dt-bindings/leds/common.h>
 #include <dt-bindings/pinctrl/rockchip.h>
 #include <dt-bindings/soc/rockchip,vop2.h>
-#include <rockchip/rk3568.dtsi>
+#include "rk3568.dtsi"
 
 / {
 	model = "BenDian One";
@@ -22,7 +23,7 @@
 	aliases {
 		ethernet0 = &gmac0;
 		ethernet1 = &gmac1;
-		mmc0 = &sdhci;
+		mmc0 = &sdmmc0;
 		led-boot     = &led_power;
 		led-failsafe = &led_power;
 		led-running  = &led_power;
@@ -52,7 +53,7 @@
 	/* ------------------------------------------------------------------ */
 	/*  LEDs                                                               */
 	/* ------------------------------------------------------------------ */
-	gpio-leds {
+	leds {
 		compatible = "gpio-leds";
 		pinctrl-names = "default";
 		pinctrl-0 = <&power_led_pin &status_led_pin>;
@@ -77,7 +78,7 @@
 	/* ------------------------------------------------------------------ */
 	/*  GPIO Fan                                                           */
 	/* ------------------------------------------------------------------ */
-	gpio-fan {
+	gpio_fan: gpio-fan {
 		compatible = "gpio-fan";
 		gpios = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
 		gpio-fan,speed-map = <0 0 7500 1>;
@@ -161,7 +162,7 @@
 	vcc5v0_sys: vcc5v0-sys {
 		compatible = "regulator-fixed";
 		regulator-name = "vcc5v0_sys";
-		regulator-always-on;
+	regulator-always-on;
 		regulator-boot-on;
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
@@ -303,17 +304,17 @@
 /*  Combo PHYs                                                            */
 /* ====================================================================== */
 /* combphy0 → SATA0 */
-&combphy0 {
+&combphy0_us {
 	status = "okay";
 };
 
 /* combphy1 → SATA1 (port 1) / USB 3.0 OTG */
-&combphy1 {
+&combphy1_usq {
 	status = "okay";
 };
 
 /* combphy2 → PCIe 2.0 (NVMe SSD on pcie20) */
-&combphy2 {
+&combphy2_psq {
 	status = "okay";
 };
 
@@ -327,7 +328,7 @@
 /* ====================================================================== */
 /*  eMMC                                                                  */
 /* ====================================================================== */
-&sdhci {
+&sdmmc0 {
 	bus-width = <8>;
 	max-frequency = <200000000>;
 	non-removable;
@@ -336,7 +337,7 @@
 	vmmc-supply = <&vcc_3v3>;
 	vqmmc-supply = <&vcc_1v8>;
 	pinctrl-names = "default";
-	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd>;
+	pinctrl-0 = <&emmc_bus8 &emmc_clk &emmc_cmd &emmc_datastrobe>;
 	status = "okay";
 };
 
@@ -360,7 +361,7 @@
 
 &usb_host0_xhci {
 	dr_mode = "host";
-	phys = <&usb2phy0_otg>, <&combphy1 PHY_TYPE_USB3>;
+	phys = <&usb2phy0_otg>, <&combphy1_usq PHY_TYPE_USB3>;
 	phy-names = "usb2-phy", "usb3-phy";
 	status = "okay";
 };
@@ -379,11 +380,11 @@
 	status = "okay";
 };
 
-&usb_host0_ehci {
+&usb_host1_ehci {
 	status = "okay";
 };
 
-&usb_host0_ohci {
+&usb_host1_ohci {
 	status = "okay";
 };
 
@@ -405,6 +406,7 @@
 };
 
 &pcie3x2 {
+	num-lanes = <2>;
 	reset-gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
 	vpcie3v3-supply = <&vcc3v3_pcie>;
 	pinctrl-names = "default";
@@ -438,6 +440,8 @@
 	fixed-link {
 		speed = <1000>;
 		full-duplex;
+		pause;
+		asym-pause;
 	};
 
 	mdio {
@@ -490,6 +494,8 @@
 					fixed-link {
 						speed = <1000>;
 						full-duplex;
+						pause;
+						asym-pause;
 					};
 				};
 			};
@@ -517,8 +523,8 @@
 	snps,reset-gpio = <&gpio1 RK_PB6 GPIO_ACTIVE_LOW>;
 	snps,reset-active-low;
 	snps,reset-delays-us = <0 20000 100000>;
-	tx_delay = <0x4f>;
-	rx_delay = <0x26>;
+	tx_delay = <0x42>;
+	rx_delay = <0x28>;
 	status = "okay";
 };
 
@@ -645,7 +651,7 @@
 /* ====================================================================== */
 /*  Crypto / RNG                                                          */
 /* ====================================================================== */
-&rng {
+&crypto {
 	status = "okay";
 };
 
@@ -676,7 +682,6 @@
 /*  Pinctrl additions                                                     */
 /* ====================================================================== */
 &pinctrl {
-
 	fan {
 		fan_pins: fan-pins {
 			rockchip,pins = <4 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
